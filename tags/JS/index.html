@@ -6,11 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>my blog</title>
+  <title>Tag: JS | my blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="my blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/tags/JS/index.html">
 <meta property="og:site_name" content="my blog">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Mao Jiaquan">
@@ -154,55 +154,34 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-null和undefine的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
     
-      <header class="article-header">
-        
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/08/26/null%E5%92%8Cundefine%E7%9A%84%E5%8C%BA%E5%88%AB/" class="archive-article-date">
+  	<time datetime="2020-08-26T12:21:26.437Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-26</time>
+</a>
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/26/null%E5%92%8Cundefine%E7%9A%84%E5%8C%BA%E5%88%AB/">null和undefine的区别</a>
+      <a class="archive-article-title" href="/2020/08/26/null%E5%92%8Cundefine%E7%9A%84%E5%8C%BA%E5%88%AB/">null和undefine的区别</a>
     </h1>
   
 
-        
-        <a href="/2020/08/26/null%E5%92%8Cundefine%E7%9A%84%E5%8C%BA%E5%88%AB/" class="archive-article-date">
-  	<time datetime="2020-08-26T12:21:26.437Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!--  more  -->
-
-<h4 id="Null：代表空对象指针。现在没有，将来可能会有"><a href="#Null：代表空对象指针。现在没有，将来可能会有" class="headerlink" title="Null：代表空对象指针。现在没有，将来可能会有"></a>Null：代表空对象指针。现在没有，将来可能会有</h4><h4 id="undefined：空，未定义。现在没有，将来也不会有（Js中独有的数据类型）"><a href="#undefined：空，未定义。现在没有，将来也不会有（Js中独有的数据类型）" class="headerlink" title="undefined：空，未定义。现在没有，将来也不会有（Js中独有的数据类型）"></a>undefined：空，未定义。现在没有，将来也不会有（Js中独有的数据类型）</h4><h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><h3 id="两者类型不一样"><a href="#两者类型不一样" class="headerlink" title="两者类型不一样"></a>两者类型不一样</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(typeof null); //object</span><br><span class="line">console.log(typeof undefined);//undefined</span><br></pre></td></tr></table></figure>
-
-<h3 id="转成数值结果不一样"><a href="#转成数值结果不一样" class="headerlink" title="转成数值结果不一样"></a>转成数值结果不一样</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(Number(null));//0</span><br><span class="line">console.log(Number(undefined));//NaN</span><br></pre></td></tr></table></figure>
-
-<h4 id="null出现的情况"><a href="#null出现的情况" class="headerlink" title="null出现的情况"></a>null出现的情况</h4><ol>
-<li>某个元素找不到</li>
-<li>RegExp中匹配不到显示null</li>
-<li>对象彻底销毁的时候为null （对象销毁-&gt;给复合数据类型赋值null，清除当前变量占用的内存）  </li>
-</ol>
-<h4 id="undefined出现的情况"><a href="#undefined出现的情况" class="headerlink" title="undefined出现的情况"></a>undefined出现的情况</h4><ol>
-<li>变量未赋值为undefined</li>
-<li>某个对象下没有这个属性</li>
-<li>函数的默认返回值</li>
-<li>访问形参时候，实参没有传值会出现undefined</li>
-<li>变量提升-&gt;var变量声明时候，赋值前为undefined</li>
-<li>在块级作用域{}之外访问undefined（内部访问是函数本身）</li>
-<li>严格模式下的this是undefined</li>
-<li>简单类型身上加属性结果为undefined</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -214,41 +193,19 @@
 		</ul>
 	</div>
 
-      
+          
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/26/null%E5%92%8Cundefine%E7%9A%84%E5%8C%BA%E5%88%AB/">Read More >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
+    </div></section>
+  
+
+    
 
 
           </div>
@@ -270,10 +227,10 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
+		isHome: false,
 		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
