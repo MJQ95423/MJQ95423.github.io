@@ -154,6 +154,92 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-js中检测数据类型的几种方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/29/js%E4%B8%AD%E6%A3%80%E6%B5%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/">js中检测数据类型的几种方式</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/29/js%E4%B8%AD%E6%A3%80%E6%B5%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2020-08-29T12:47:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+
+<h3 id="1、typeof"><a href="#1、typeof" class="headerlink" title="1、typeof"></a>1、typeof</h3><p>一元运算符，用来检测数据类型。只可以检测number,string,boolean,object,function,undefined。对于基本数据类型是没有问题的，但是遇到引用数据类型是不起作用的（无法细分对象）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> str = <span class="string">&#x27;&#123;&#125;&#x27;</span>;</span><br><span class="line"><span class="built_in">let</span> fn = <span class="function"><span class="title">function</span></span>()&#123;&#125;;</span><br><span class="line"><span class="built_in">let</span> obj = &#123;&#125;;</span><br><span class="line"><span class="built_in">let</span> ary = [];</span><br><span class="line"><span class="built_in">let</span> rg = /\d/;</span><br><span class="line">console.log(typeof str);//string</span><br><span class="line">console.log(typeof fn);//<span class="keyword">function</span></span><br><span class="line">console.log(typeof obj);//object</span><br><span class="line">console.log(typeof ary);//object</span><br><span class="line">console.log(typeof rg);//object&lt;br&gt;&lt;br&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、instanceof（二元运算符，需要两个操作数）"><a href="#2、instanceof（二元运算符，需要两个操作数）" class="headerlink" title="2、instanceof（二元运算符，需要两个操作数）"></a>2、instanceof（二元运算符，需要两个操作数）</h3><p>检测某个对象是不是另外一个对象的实例instanceof只能用来判断对象和函数，不能用来判断字符串和数字</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> arr = [1,2,3];</span><br><span class="line">console.log(arr instanceof Array);//<span class="literal">true</span>  检测arr是不是内置类Array的实例</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、constructor"><a href="#3、constructor" class="headerlink" title="3、constructor"></a>3、constructor</h3><p>js中所有对象都继承于Object,constructor是其中的一个属性。默认指向实例的构造函数（可以修改）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">fns</span></span> ()&#123;&#125;</span><br><span class="line"><span class="built_in">let</span> f = new fns;</span><br><span class="line">console.log(f.constructor === fns);//<span class="literal">true</span></span><br><span class="line">console.log(f.constructor.name);//fns构造函数名称//constructor属性并非一定指向构造函数，他也可以修改、变更</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、Object-prototype-toString-call"><a href="#4、Object-prototype-toString-call" class="headerlink" title="4、Object.prototype.toString.call"></a>4、Object.prototype.toString.call</h3><p>JavaScript中,通过Object.prototype.toString方法，判断某个对象值属于哪种内置类型</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> date = new Date;</span><br><span class="line">console.log(Object.prototype.toString.call(date));//[object Date]</span><br><span class="line"><span class="built_in">let</span> re = <span class="string">&#x27;/\d+g/&#x27;</span>;</span><br><span class="line">console.log(Object.prototype.toString.call(re));//[object String]</span><br><span class="line"><span class="built_in">let</span> sz = [2,3,4];</span><br><span class="line">console.log(Object.prototype.toString.call(sz));//[object Array]</span><br><span class="line"><span class="built_in">let</span> hs = <span class="function"><span class="title">function</span></span>()&#123;&#125;;</span><br><span class="line">console.log(Object.prototype.toString.call(hs));//[object Function]</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/29/js%E4%B8%AD%E6%A3%80%E6%B5%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/">Read More >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-null和undefine的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -174,9 +260,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <!--  more  -->
+        <a id="more"></a>
 
-<h4 id="Null：代表空对象指针。现在没有，将来可能会有"><a href="#Null：代表空对象指针。现在没有，将来可能会有" class="headerlink" title="Null：代表空对象指针。现在没有，将来可能会有"></a>Null：代表空对象指针。现在没有，将来可能会有</h4><h4 id="undefined：空，未定义。现在没有，将来也不会有（Js中独有的数据类型）"><a href="#undefined：空，未定义。现在没有，将来也不会有（Js中独有的数据类型）" class="headerlink" title="undefined：空，未定义。现在没有，将来也不会有（Js中独有的数据类型）"></a>undefined：空，未定义。现在没有，将来也不会有（Js中独有的数据类型）</h4><h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><h3 id="两者类型不一样"><a href="#两者类型不一样" class="headerlink" title="两者类型不一样"></a>两者类型不一样</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(typeof null); //object</span><br><span class="line">console.log(typeof undefined);//undefined</span><br></pre></td></tr></table></figure>
+<p> Null：代表空对象指针。现在没有，将来可能会有</p>
+<h4 id="undefined：空，未定义。现在没有，将来也不会有（Js中独有的数据类型）"><a href="#undefined：空，未定义。现在没有，将来也不会有（Js中独有的数据类型）" class="headerlink" title="undefined：空，未定义。现在没有，将来也不会有（Js中独有的数据类型）"></a>undefined：空，未定义。现在没有，将来也不会有（Js中独有的数据类型）</h4><h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><h3 id="两者类型不一样"><a href="#两者类型不一样" class="headerlink" title="两者类型不一样"></a>两者类型不一样</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(typeof null); //object</span><br><span class="line">console.log(typeof undefined);//undefined</span><br></pre></td></tr></table></figure>
 
 <h3 id="转成数值结果不一样"><a href="#转成数值结果不一样" class="headerlink" title="转成数值结果不一样"></a>转成数值结果不一样</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(Number(null));//0</span><br><span class="line">console.log(Number(undefined));//NaN</span><br></pre></td></tr></table></figure>
 
@@ -393,27 +480,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
+              <a href="https://github.com/MJQ95423/MJQ95423.github.io" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>github</a>
             </li>
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接3</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接4</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接5</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接6</a>
+              <a href="https://juejin.im/user/448256476720711/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>掘金</a>
             </li>
           
         </ul>
@@ -424,7 +495,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">前端小菜鸟&lt;br&gt;&lt;br&gt;记录前端学习笔记&lt;br&gt;感谢你的光临</div>
   	  	
     	</section>
     
